@@ -26,7 +26,7 @@ class Login extends React.Component {
     const { name } = this.state;
     return (
       <div data-testid="page-login">
-        <form data-testid="login-name-input">
+        <form>
           <label htmlFor="inputName">
             <input
               id="inputName"
@@ -39,6 +39,7 @@ class Login extends React.Component {
           <button
             type="submit"
             id="button"
+            data-testid="login-submit-button"
             disabled={
               !this.disabledButton()
             }
