@@ -12,7 +12,7 @@ class Search extends React.Component {
       artist: '',
       listAlbums: '',
       nameArtist: '',
-      sttsButton: '',
+      sttsButton: false,
     };
   }
 
@@ -34,6 +34,7 @@ class Search extends React.Component {
     event.preventDefault();
     const { artist } = this.state;
     this.setState({ sttsButton: true });
+
     const responseAlbum = await searchAlbumsAPIs(artist); // fazendo a requisição da API
     this.setState({ listAlbums: responseAlbum, artist: '' });
   }
@@ -83,7 +84,7 @@ class Search extends React.Component {
               {/*  o lint que coloca {''} */}
               {/* quando se usa map é necessario ter uma key para identificar o elemento */}
               <Link
-                to={ `/album/${collectionId}` }
+                to={ `/album/${collectionId}` }// aparece na barra de navegação/album/numero do album
 
               >
                 <li data-testid={ `link-to-album-${collectionId}` }>
