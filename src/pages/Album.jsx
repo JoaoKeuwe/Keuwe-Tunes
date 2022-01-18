@@ -8,8 +8,9 @@ class Album extends React.Component {
   constructor() {
     super();
     this.state = {
-      /* nameArtist: '', */
-      arrayOfMusics: '',
+      nameArtist: '',
+      arrayOfMusics: [],
+      collectionAlbum: '',
     };
   }
 
@@ -20,26 +21,30 @@ class Album extends React.Component {
   handleMusics= async () => {
     const { match: { params: { id } } } = this.props; // desenstruturando id dentro de params, e params dentro de match, e match dentro de props.
     const responseMusic = await getMusics(id);// fazendo a requisição de 'getMusics' com o id
-    this.setState({ arrayOfMusics: responseMusic });
+    const filterMusics = responseMusic.filter(({trackName }) => trackName);  
+    this.setState({ 
+      arrayOfMusics: filterMusics,
+      nameArtist:filterMusics[0].artistName,
+      collectionAlbum:filterMusics[0].collectionName,
+     });
+     console.log(filterMusics);
   }
 
   render() {
-    const { arrayOfMusics } = this.state;
+    const { arrayOfMusics, nameArtist, collectionAlbum } = this.state;
+    console.log(arrayOfMusics);
     return (
       <div data-testid="page-album">
         <Header />
-        <p data-testid="artist-name">{arrayOfMusics[0].artistName}</p>
+        <h3 data-testid="artist-name">{`Artist Name ${nameArtist}`}</h3>
         {' '}
         {/* exibido nome do artista/album */}
-        <p data-testid="album-name">{arrayOfMusics[0].collectionName}</p>
-        {/*   <MusicCard /> */}
+        <h3 data-testid="album-name">{`Collection Name ${collectionAlbum}`}</h3>
 
         {/* //filtrando para que  filter pegue somente os objetos que contém 'previewUrl' dentro do array 'arrayOfMusic */}
-        {arrayOfMusics.filter(({ previewUrl }) => (previewUrl))
-          .map(({ trackName, previewUrl }) => (
-            <section key={ trackName }>
-              <MusicCard trackName={ trackName } previewUrl={ previewUrl } />
-
+         { Array.from(arrayOfMusics).map((music) => (
+            <section key={ music.trackName }>
+              <MusicCard trackName={ music.trackName } previewUrl={ music.previewUrl } />
             </section>
           ))}
       </div>
