@@ -22,8 +22,7 @@ class Album extends React.Component {
   handleMusics = async () => {
     const { match: { params: { id } } } = this.props;
     // desenstruturando id dentro de params, e params dentro de match, e match dentro de props.
-    const responseMusic = await getMusics(id);
-    console.log(responseMusic); // requisição de 'getMusics' usando id do album para buscar as musicas desse album
+    const responseMusic = await getMusics(id); // requisição de 'getMusics' usando id do album para buscar as musicas desse album
     const filterMusics = responseMusic.filter((music) => music.trackName);// filtrando resultados dentro de 'responseMusic' e pegando tudo que contenha 'trackName'
     this.setState({
       arrayOfMusics: filterMusics, // arrayOfMusic irá receber todas as músicas que tem em trackName
