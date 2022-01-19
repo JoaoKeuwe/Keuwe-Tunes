@@ -20,41 +20,38 @@ class Album extends React.Component {
   }
 
   handleMusics = async () => {
-    const {
-      match: {
-        params: { id },
-      },
-    } = this.props; // desenstruturando id dentro de params, e params dentro de match, e match dentro de props.
-    const responseMusic = await getMusics(id); // fazendo a requisição de 'getMusics' com o id
-    const filterMusics = responseMusic.filter(({ trackName }) => trackName);
+    const { match: { params: { id } } } = this.props;
+    // desenstruturando id dentro de params, e params dentro de match, e match dentro de props.
+    const responseMusic = await getMusics(id);
+    console.log(responseMusic); // requisição de 'getMusics' usando id do album para buscar as musicas desse album
+    const filterMusics = responseMusic.filter((music) => music.trackName);// filtrando resultados dentro de 'responseMusic' e pegando tudo que contenha 'trackName'
     this.setState({
-      arrayOfMusics: filterMusics,
-      nameArtist: filterMusics[0].artistName,
-      collectionAlbum: filterMusics[0].collectionName,
+      arrayOfMusics: filterMusics, // arrayOfMusic irá receber todas as músicas que tem em trackName
+      nameArtist: filterMusics[0].artistName, // ets asendo alterado o estado de nameAtist para receber a primeira posição do array de filterMusics dentro de artistName
+      collectionAlbum: filterMusics[0].collectionName, // collectionAlbum esta recebendo a primira propriedade do array filterMusics
     });
-    console.log(filterMusics);
   };
 
   render() {
     const { arrayOfMusics, nameArtist, collectionAlbum } = this.state;
-    console.log(arrayOfMusics);
     return (
       <div data-testid="page-album">
         <Header />
         <h3 data-testid="artist-name">{`Artist Name ${nameArtist}`}</h3>
-        {''}
         {/* exibido nome do artista/album */}
         <h3 data-testid="album-name">{`Collection Name ${collectionAlbum}`}</h3>
         {/* //filtrando para que  filter pegue somente os objetos que contém 'previewUrl' dentro do array 'arrayOfMusic */}
         {Array.from(arrayOfMusics).map((music) => (
           <section key={ music.trackName }>
             <MusicCard
+              music={ music }
+              trackId={ music.trackId }
               trackName={ music.trackName }
               previewUrl={ music.previewUrl }
             />
           </section>
         ))}
-      </div>
+      </div> // usei o array.From para transformar o arrayOfMusic em um array. OBS: foi necessarios transformar arrayofmusic em um array por mais que seu valor seja o retorno de um filter pois estava retornando varios objetos.
     );
   }
 }
