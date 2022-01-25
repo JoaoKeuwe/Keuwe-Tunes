@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPIs from '../services/searchAlbumsAPI';
 import '../styles/Search.css';
+import { FaRegSadTear } from 'react-icons/fa';
+import { HiMusicNote } from 'react-icons/hi';
 
 const DOIS = 2;
 // definindo estados atuais
@@ -10,7 +12,7 @@ class Search extends React.Component {
   constructor() {
     super();
     this.state = {
-      artist: 'the weeknd',
+      artist: '',
       listAlbums: '',
       nameArtist: '',
       sttsButton: false,
@@ -73,7 +75,7 @@ class Search extends React.Component {
           </form>
           <h2 className="text-content-2">
             {sttsButton
-              ? `Resultado de álbuns de: ${nameArtist}` // condição caso 'sttsButton' for verdadeiro retorna o resultado, senão, não retorna nada
+              ? `Resultado de álbuns de: ${nameArtist}`// condição caso 'sttsButton' for verdadeiro retorna o resultado, senão, não retorna nada
               : null}
           </h2>
           <section className="all-albums-content">
@@ -115,7 +117,15 @@ class Search extends React.Component {
                 </section>
 
               ))
-              : <h2 className="text-content">Nenhum álbum foi encontrado</h2>}
+              : <h2 className="text-content">
+                Nenhum álbum foi encontrado
+                <br />
+                <div className="icon">
+                  <FaRegSadTear />
+                </div>
+                {' '}
+
+                </h2>}
           </section>
         </div>
       </section>

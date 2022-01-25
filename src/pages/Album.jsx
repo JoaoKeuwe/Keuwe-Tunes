@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import '../styles/Album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -34,11 +35,17 @@ class Album extends React.Component {
   render() {
     const { arrayOfMusics, nameArtist, collectionAlbum } = this.state;
     return (
-      <div data-testid="page-album">
-        <Header />
-        <h3 data-testid="artist-name">{`Artist Name ${nameArtist}`}</h3>
+
+      <div
+        data-testid="page-album"
+        className="name-album"
+      >
+        <div className="header-album">
+          <Header />
+        </div>
+        <h3 data-testid="artist-name">{` ${nameArtist}`}</h3>
         {/* exibido nome do artista/album */}
-        <h3 data-testid="album-name">{`Collection Name ${collectionAlbum}`}</h3>
+        <h3 data-testid="album-name">{` ${collectionAlbum}`}</h3>
         {/* //filtrando para que  filter pegue somente os objetos que contém 'previewUrl' dentro do array 'arrayOfMusic */}
         {Array.from(arrayOfMusics).map((music) => (
           <section key={ music.trackName }>
