@@ -55,7 +55,7 @@ class Search extends React.Component {
                 type="text"
                 value={ artist } // passando a chave 'artist' que está dentro do state
                 data-testid="search-artist-input"
-                placeholder="Digite o nome de um artista"
+                placeholder="Digite o nome de um artista ou álbum"
                 id="artist"
                 className="input"
                 onChange={ this.handleMusic } // chamando a função 'handleMusic' através do evento 'onChange'
