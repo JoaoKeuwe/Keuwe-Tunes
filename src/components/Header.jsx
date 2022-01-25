@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI'; // por não ser a unica dentro de usersApi se usa chaves para especificar
 import Loading from '../pages/Loading';
 import keuwe from '../styles/keuwe.png';
+import '../styles/Login.css';
 
 class Header extends React.Component {
   constructor() {
@@ -65,7 +66,7 @@ class Header extends React.Component {
         <header data-testid="header-component">
           <h2 data-testid="header-user-name">
             <div className="name">
-              {/*  { userObj.name } */}
+              {userObj && `Olá ${userObj.name}, o que vamos ouvir hoje?`}
             </div>
           </h2>
         </header>

@@ -65,6 +65,11 @@ border-radius: 30px;
       letter-spacing: 2px
     }
 
+    .button:hover {
+    background-color: rgb(32, 32, 32);
+    font-size:15px;
+    }
+
     @keyframes loading {
         0% {
             transform: rotate(0);
@@ -109,8 +114,16 @@ border-radius: 30px;
         margin-top: -220px;
     }
 
+    .links:hover {
+       color: rgb(162, 0, 255);
+       font-size: 32px;
+    }
+
     .name {
         color: white;
+        font-size: 30px;
+        margin-left: 40px;
+        margin-top: -30px;
     }
 
     .input{
