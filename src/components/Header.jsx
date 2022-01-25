@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI'; // por não ser a unica dentro de usersApi se usa chaves para especificar
 import Loading from '../pages/Loading';
+import keuwe from '../styles/keuwe.png';
 
 class Header extends React.Component {
   constructor() {
@@ -30,16 +31,42 @@ class Header extends React.Component {
     const { loading, userObj } = this.state;
     return (
       <section>
-        <Link to="/search" data-testid="link-to-search">Pesquisa</Link>
+        <img src={ keuwe } alt="foto" className="picture-header" />
+        <div className="header">
 
-        <Link to="/favorites" data-testid="link-to-favorites">Músicas Favoritas</Link>
+          <Link
+            to="/search"
+            data-testid="link-to-search"
+            className="links"
+          >
+            Pesquisar
 
-        <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          </Link>
 
+          <Link
+            to="/favorites"
+            data-testid="link-to-favorites"
+            className="links"
+          >
+            Músicas Favoritas
+
+          </Link>
+
+          <Link
+            to="/profile"
+            data-testid="link-to-profile"
+            className="links"
+          >
+            Perfil
+
+          </Link>
+        </div>
         { loading ? <Loading /> : null}
         <header data-testid="header-component">
           <h2 data-testid="header-user-name">
-            { userObj.name }
+            <div className="name">
+              {/*  { userObj.name } */}
+            </div>
           </h2>
         </header>
       </section>

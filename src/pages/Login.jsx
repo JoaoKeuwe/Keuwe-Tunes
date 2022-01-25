@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/Login.css';
+import keuwe from '../styles/keuwe.png';
 // coloquei em chaves para exportar somente CreateUser, Redirect
 const TRES = 3;
 // setando os estados iniciais
@@ -54,34 +56,44 @@ class Login extends React.Component {
   render() {
     const { loggedin, name, renderLoading } = this.state; // desconrtuindo loggedin, name, renderLoading que estao dentro do state e state dentro do this
     return (
-      <div data-testid="page-login">
-        {renderLoading ? <Loading /> : null}
-        {loggedin ? <Redirect to="/search" /> : null }
-        {/* se loggedin for verdadeiro o redirect irá redirecionar o user para uma outra página(compenent) chamado Search */}
-        <form>
-          <label htmlFor="inputName">
-            <input
-              id="inputName"
-              type="text"
-              data-testid="login-name-input"
-              value={ name }
-              onChange={ this.handleInput }
-            />
-          </label>
-          <button
-            type="submit"
-            id="button"
-            data-testid="login-submit-button"
-            disabled={
-              !this.disabledButton()
-            }
-            onClick={ this.handleSubmitUser }
-          >
-            Entrar
+      <section className="login">
+        <img src={ keuwe } alt="foto" className="picture" />
+        <div
+          data-testid="page-login"
+          className="login-2"
+        >
+          {/* se loggedin for verdadeiro o redirect irá redirecionar o user para uma outra página(compenent) chamado Search */}
+          <form className="form">
+            <label htmlFor="inputName">
+              <input
+                className="msmclass"
+                id="inputName"
+                placeholder="Digite seu nome"
+                type="text"
+                data-testid="login-name-input"
+                value={ name }
+                onChange={ this.handleInput }
+              />
+            </label>
+            <button
+              className="msmclass button"
+              type="submit"
+              id="button"
+              data-testid="login-submit-button"
+              disabled={
+                !this.disabledButton()
+              }
+              onClick={ this.handleSubmitUser }
+            >
+              Entrar
 
-          </button>
-        </form>
-      </div>
+            </button>
+
+          </form>
+          {renderLoading ? <Loading /> : null}
+          {loggedin ? <Redirect to="/search" /> : null }
+        </div>
+      </section>
     );
   }
 }

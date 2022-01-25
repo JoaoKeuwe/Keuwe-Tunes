@@ -1,9 +1,13 @@
 import React from 'react';
+import { AiOutlineReload } from 'react-icons/ai';
 
 class Loading extends React.Component {
   render() {
     return (
-      <p>Carregando...</p>
+      <p className="loading">
+        <AiOutlineReload />
+
+      </p>
     );
   }
 }

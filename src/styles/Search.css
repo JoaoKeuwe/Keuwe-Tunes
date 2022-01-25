@@ -1,0 +1,19 @@
+.img {
+    width: 250px;
+    margin-top: 40px;
+    border-radius: 50%;
+}
+
+/* .album-content {
+
+} */
+
+.all-albums-content {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 100px 200px;
+    width: 80%;
+    margin: auto;
+    margin-top:100px;
+}

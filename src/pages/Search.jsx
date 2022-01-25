@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPIs from '../services/searchAlbumsAPI';
+import '../styles/Search.css';
 
 const DOIS = 2;
 // definindo estados atuais
@@ -9,7 +10,7 @@ class Search extends React.Component {
   constructor() {
     super();
     this.state = {
-      artist: '',
+      artist: 'the weeknd',
       listAlbums: '',
       nameArtist: '',
       sttsButton: false,
@@ -42,61 +43,82 @@ class Search extends React.Component {
   render() {
     const { artist, listAlbums, sttsButton, nameArtist } = this.state;
     return (
-      <div data-testid="page-search">
+      <section data-testid="page-search">
         <Header />
         {/* renderizando o header */}
-        <form action="">
-          <label htmlFor="artist">
-            <input
-              type="text"
-              value={ artist } // passando a chave 'artist' que está dentro do state
-              data-testid="search-artist-input"
-              placeholder="digite o pancadão"
-              id="artist"
-              onChange={ this.handleMusic } // chamando a função 'handleMusic' através do evento 'onChange'
-            />
-          </label>
+        <div className="content">
+          <form action="">
+            <label htmlFor="artist">
+              <input
+                type="text"
+                value={ artist } // passando a chave 'artist' que está dentro do state
+                data-testid="search-artist-input"
+                placeholder="Digite o nome de um artista"
+                id="artist"
+                className="input"
+                onChange={ this.handleMusic } // chamando a função 'handleMusic' através do evento 'onChange'
+              />
+            </label>
 
-          <button
-            id="buttonDisabled"
-            type="submit"
-            data-testid="search-artist-button"
-            disabled={ !this.buttonDisabled() } // o '!' está alterando o valor incial da função 'buttonDisabled' para falso
-            onClick={ this.searchButton }
-          >
-            Pesquisar
-          </button>
-        </form>
-        <h2>
-          {sttsButton
-            ? `Resultado de álbuns de: ${nameArtist}` // condição caso 'sttsButton' for verdadeiro retorna o resultado, senão, não retorna nada
-            : null}
-        </h2>
-        {listAlbums.length > 0
-          ? listAlbums.map(({
-            collectionId,
-            artistName,
-            artworkUrl100,
-            collectionName, // fiz uma desconstrução direta dos objetos que estão dentro de ListAlbum
-          }) => (
-            <section key={ collectionId }>
-              {' '}
-              {/*  o lint que coloca {''} */}
-              {/* quando se usa map é necessario ter uma key para identificar o elemento */}
-              <Link
-                to={ `/album/${collectionId}` }// aparece na barra de navegação/album/numero do album
+            <button
+              id="buttonDisabled"
+              type="submit"
+              data-testid="search-artist-button"
+              className="main-button"
+              disabled={ !this.buttonDisabled() } // o '!' está alterando o valor incial da função 'buttonDisabled' para falso
+              onClick={ this.searchButton }
+            >
+              Pesquisar
+            </button>
+          </form>
+          <h2 className="text-content-2">
+            {sttsButton
+              ? `Resultado de álbuns de: ${nameArtist}` // condição caso 'sttsButton' for verdadeiro retorna o resultado, senão, não retorna nada
+              : null}
+          </h2>
+          <section className="all-albums-content">
+            {listAlbums.length > 0
+              ? listAlbums.map(({
+                collectionId,
+                artistName,
+                artworkUrl100,
+                collectionName, // fiz uma desconstrução direta dos objetos que estão dentro de ListAlbum
+              }) => (
+                <section
+                  key={ collectionId }
+                  className="album-content"
+                >
+                  {' '}
+                  {/*  o lint que coloca {''} */}
+                  {/* quando se usa map é necessario ter uma key para identificar o elemento */}
+                  <Link
+                    className="name-album"
+                    to={ `/album/${collectionId}` }// aparece na barra de navegação/album/numero do album
 
-              >
-                <li data-testid={ `link-to-album-${collectionId}` }>
-                  <p>{ artistName }</p>
-                  <img src={ artworkUrl100 } alt={ artistName } />
-                  <p>{collectionName}</p>
-                </li>
-              </Link>
-            </section>
-          ))
-          : <h2>Nenhum álbum foi encontrado</h2>}
-      </div>
+                  >
+                    <li
+                      data-testid={ `link-to-album-${collectionId}` }
+                      className="name-album"
+                    >
+                      <div className="album">
+                        <img
+                          src={ artworkUrl100 }
+                          alt={ artistName }
+                          className="img"
+                        />
+                        <h6 className="name-album">{collectionName}</h6>
+                        <br />
+                        <p className="name-album">{ artistName }</p>
+                      </div>
+                    </li>
+                  </Link>
+                </section>
+
+              ))
+              : <h2 className="text-content">Nenhum álbum foi encontrado</h2>}
+          </section>
+        </div>
+      </section>
     );
   }
 }
