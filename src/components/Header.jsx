@@ -33,7 +33,9 @@ class Header extends React.Component {
     const { loading, userObj } = this.state;
     return (
       <section>
-        <img src={ keuwe } alt="foto" className="picture-header" />
+        <div>
+          <img src={ keuwe } alt="foto" className="picture-header" />
+        </div>
         <div className="header">
 
           <Link
