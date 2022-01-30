@@ -64,6 +64,11 @@ class Login extends React.Component {
         >
           {/* se loggedin for verdadeiro o redirect irá redirecionar o user para uma outra página(compenent) chamado Search */}
           <form className="form">
+            <div className="welcome">
+
+              <h1 className="welcome">Seja bem vindo!</h1>
+            </div>
+
             <label htmlFor="inputName">
               <input
                 className="msmclass"

@@ -47,27 +47,41 @@ class MusicCard extends React.Component {
     const { trackName, previewUrl, trackId } = this.props;
     const { loading, isFavorite } = this.state;
     return (
-      <section>
-        <h2>{trackName}</h2>
-        <audio
-          data-testid="audio-component"
-          src={ previewUrl }
-          controls
-        >
-          <track kind="captions" />
-        </audio>
-        <form>
-          <label htmlFor="button">
-            Favorita
-            <input
-              type="checkbox"
-              checked={ isFavorite }
-              onChange={ this.musicFavorite }
-              id="button"
-              data-testid={ `checkbox-music-${trackId}` }
-            />
-          </label>
-        </form>
+      <section className="section-musics">
+
+        <div className="name-music">
+          <h2>{trackName}</h2>
+        </div>
+        <div className="audio">
+          <audio
+            className="audio"
+            data-testid="audio-component"
+            src={ previewUrl }
+            controls
+          >
+            <track kind="captions" />
+          </audio>
+
+        </div>
+
+        <div>
+          <form>
+            <label htmlFor="button">
+              Favorita
+
+              <input
+                className="checkbox"
+                type="checkbox"
+                checked={ isFavorite }
+                onChange={ this.musicFavorite }
+                id="button"
+                data-testid={ `checkbox-music-${trackId}` }
+              />
+
+            </label>
+
+          </form>
+        </div>
         {loading ? <Loading /> : null}
       </section>
     );

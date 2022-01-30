@@ -1,11 +1,13 @@
-/* .name-album {
-    display:flex;
+.section-musics {
+    display: flex;
+    justify-content:center;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 100px 200px;
-    width: 80%;
+    gap: 30px;
     margin: auto;
-    margin-top:100px;
-    color: white
-} */
+    margin-top:50px;
+}
+
+.name-music {
+   width: 30%;
+}
 

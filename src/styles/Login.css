@@ -21,6 +21,7 @@ body {
   }
   
   .login-2 {
+    box-shadow: 6px 5px 19px rgb(53, 1, 73);
     border: 2px solid none;
     background: rgb(42,0,86);
 background: linear-gradient(331deg, rgba(42,0,86,1) 0%, rgba(9,2,40,1) 100%);
@@ -33,11 +34,25 @@ border-radius: 30px;
     display: flex;
   }
 
+   .welcome{
+  
+       letter-spacing: 1px;
+       font-size:30px;
+       color: white;
+       padding-top:-30px;
+       margin-bottom:20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+  }
+
   .msmclass {
+    
     background-color: rgb(255, 255, 255) ;
     padding: 5px;
     /* display: flex; */
-    /* margin-top: -35px; */
+
     margin-bottom:10px;
     width: 100%;
     border: 3px solid  #7700ff;

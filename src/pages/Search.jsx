@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPIs from '../services/searchAlbumsAPI';
 import '../styles/Search.css';
+import Image from '../components/Image';
 import { FaRegSadTear } from 'react-icons/fa';
 import { HiMusicNote } from 'react-icons/hi';
 
@@ -124,8 +125,8 @@ class Search extends React.Component {
                   <FaRegSadTear />
                 </div>
                 {' '}
+              </h2>}
 
-                </h2>}
           </section>
         </div>
       </section>

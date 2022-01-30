@@ -4,6 +4,7 @@ import { getUser } from '../services/userAPI'; // por não ser a unica dentro de
 import Loading from '../pages/Loading';
 import keuwe from '../styles/keuwe.png';
 import '../styles/Login.css';
+import '../styles/Album.css';
 
 class Header extends React.Component {
   constructor() {
@@ -62,14 +63,16 @@ class Header extends React.Component {
 
           </Link>
         </div>
-        { loading ? <Loading /> : null}
-        <header data-testid="header-component">
-          <h2 data-testid="header-user-name">
-            <div className="name">
-              {userObj && `Olá ${userObj.name}, o que vamos ouvir hoje?`}
-            </div>
-          </h2>
-        </header>
+        { loading
+          ? <Loading />
+          : (
+            <header data-testid="header-component">
+              <h2 data-testid="header-user-name">
+                <div className="name">
+                  {userObj && `Olá ${userObj.name}, o que vamos ouvir hoje?`}
+                </div>
+              </h2>
+            </header>)}
       </section>
     );
   }
