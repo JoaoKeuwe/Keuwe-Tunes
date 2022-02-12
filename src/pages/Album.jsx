@@ -43,20 +43,24 @@ class Album extends React.Component {
         <div className="header-album">
           <Header />
         </div>
-        <h3 data-testid="artist-name" className="artist-name">{` ${nameArtist}`}</h3>
-        {/* exibido nome do artista/album */}
-        <h3 data-testid="album-name">{` ${collectionAlbum}`}</h3>
-        {/* //filtrando para que  filter pegue somente os objetos que contém 'previewUrl' dentro do array 'arrayOfMusic */}
-        {Array.from(arrayOfMusics).map((music) => (
-          <section key={ music.trackName }>
-            <MusicCard
-              music={ music }
-              trackId={ music.trackId }
-              trackName={ music.trackName }
-              previewUrl={ music.previewUrl }
-            />
-          </section>
-        ))}
+        <div className="centralizando-musicas">
+          <h3 data-testid="artist-name" className="artist-name">{` ${nameArtist}`}</h3>
+          {/* exibido nome do artista/album */}
+          <h3 data-testid="album-name">{` ${collectionAlbum}`}</h3>
+
+          {/* //filtrando para que  filter pegue somente os objetos que contém 'previewUrl' dentro do array 'arrayOfMusic */}
+          {Array.from(arrayOfMusics).map((music) => (
+            <section key={ music.trackName }>
+
+              <MusicCard
+                music={ music }
+                trackId={ music.trackId }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+              />
+            </section>
+          ))}
+        </div>
       </div> // usei o array.From para transformar o arrayOfMusic em um array. OBS: foi necessarios transformar arrayofmusic em um array por mais que seu valor seja o retorno de um filter pois estava retornando varios objetos.
     );
   }
