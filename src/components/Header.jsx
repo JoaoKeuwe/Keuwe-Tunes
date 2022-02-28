@@ -33,9 +33,13 @@ class Header extends React.Component {
     const { loading, userObj } = this.state;
     return (
       <section>
-        <div>
-          <img src={ keuwe } alt="foto" className="picture-header" />
-        </div>
+        <article>
+          <Link to="/search">
+            {' '}
+            <img src={ keuwe } alt="foto" className="picture-header" />
+            {' '}
+          </Link>
+        </article>
         <div className="header">
 
           <Link
@@ -65,16 +69,14 @@ class Header extends React.Component {
 
           </Link>
         </div>
-        { loading
-          ? <Loading />
-          : (
-            <header data-testid="header-component">
-              <h2 data-testid="header-user-name">
-                <div className="name">
-                  {userObj && `Olá ${userObj.name}, o que vamos ouvir hoje?`}
-                </div>
-              </h2>
-            </header>)}
+
+        <header data-testid="header-component">
+          <h2 data-testid="header-user-name">
+            <div className="name">
+              {userObj && `Olá ${userObj.name}, o que vamos ouvir hoje?`}
+            </div>
+          </h2>
+        </header>
       </section>
     );
   }
