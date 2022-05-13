@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPIs from '../services/searchAlbumsAPI';
 import '../styles/Search.css';
-import Image from '../components/Image';
-import { FaRegSadTear } from 'react-icons/fa';
-import { HiMusicNote } from 'react-icons/hi';
 
 const DOIS = 2;
 // definindo estados atuais
@@ -58,6 +55,7 @@ class Search extends React.Component {
                 data-testid="search-artist-input"
                 placeholder="Digite o nome de um artista ou álbum"
                 id="artist"
+                autoComplete="off"
                 className="input"
                 onChange={ this.handleMusic } // chamando a função 'handleMusic' através do evento 'onChange'
               />
@@ -118,14 +116,13 @@ class Search extends React.Component {
                 </section>
 
               ))
-              : <h2 className="text-content">
-                Nenhum álbum foi encontrado
-                <br />
-                <div className="icon">
-                  <FaRegSadTear />
-                </div>
-                {' '}
-              </h2>}
+              : (
+                <h2 className="text-content">
+                  Nenhum álbum foi encontrado
+                  <br />
+                  <div className="icon" />
+                  {' '}
+                </h2>)}
 
           </section>
         </div>

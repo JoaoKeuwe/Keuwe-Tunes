@@ -75,6 +75,7 @@ class Login extends React.Component {
                 id="inputName"
                 placeholder="Digite seu nome"
                 type="text"
+                autoComplete="off"
                 data-testid="login-name-input"
                 value={ name }
                 onChange={ this.handleInput }

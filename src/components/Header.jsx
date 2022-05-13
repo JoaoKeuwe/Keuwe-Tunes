@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI'; // por não ser a unica dentro de usersApi se usa chaves para especificar
-import Loading from '../pages/Loading';
+/* import Loading from '../pages/Loading'; */
 import keuwe from '../styles/keuwe.png';
 import '../styles/Login.css';
 import '../styles/Album.css';
@@ -11,7 +11,7 @@ class Header extends React.Component {
     super();
     this.state = {
       userObj: '',
-      loading: true,
+      /*  loading: true, */
     };
   }
 
@@ -25,12 +25,12 @@ class Header extends React.Component {
     if (response) {
       return this.setState({
         userObj: response,
-        loading: false });
+        /* loading: false */ });
     }
   }
 
   render() {
-    const { loading, userObj } = this.state;
+    const { userObj } = this.state;
     return (
       <section>
         <article>
@@ -61,11 +61,11 @@ class Header extends React.Component {
           </Link>
 
           <Link
-            to="/profile"
+            to="/"
             data-testid="link-to-profile"
             className="links"
           >
-            Perfil
+            Log out
 
           </Link>
         </div>
