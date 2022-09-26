@@ -14,11 +14,11 @@ O KeuweTunes foi um projeto que desenvolvi na trybe que de começo tinha seu nom
 
 Utilizei as seguintes Linguagens:
 
--React.js
--HTML
--CSS
--Git
--GitHub
+- React.js
+- HTML<br/>
+- CSS<br/>
+- Git<br/>
+- GitHub<br/>
  
 ## 
 
