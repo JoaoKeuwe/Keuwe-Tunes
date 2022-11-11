@@ -6,6 +6,7 @@
 <h5>
 Este projeto representa muito para mim, pois a 6 meses atrás quando eu estava iniciando minha jornada como Dev, eu nem imaginaria que conseguiria fazer um projeto tão grande e complexo como esse.
 O KeuweTunes foi um projeto que desenvolvi na trybe que de começo tinha seu nome como TrybeTunes, que consiste em um streamming de músicas onde nele utilizei, APIs, Estado Local e React Router.
+
 <h5/>
 
 <div/>
